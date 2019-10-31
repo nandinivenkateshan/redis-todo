@@ -1,0 +1,62 @@
+.text-area {
+  border-color: rgb(187, 135, 135);
+  resize: none;
+  height: 40px;
+  color: rgb(185, 29, 34);
+  font-weight: bold;
+  margin: 0px 20px 0px 20px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.strike-through {
+  border-color: rgb(187, 135, 135);
+  resize: none;
+  height: 40px;
+  color: green;
+  font-weight: bold;
+  margin: 0px 20px 0px 20px;
+  text-decoration: line-through;
+  pointer-events: none;
+  opacity: 0.5;
+  font-size: 15px;
+  padding: 10px;
+}
+.show-input-date label {
+    display: block;
+    margin-left:70px;
+  }
+
+  .items{
+    display:flex;
+  }
+
+  @media (min-width:375px) and (max-width:425px) {
+    .items {
+      flex-wrap: wrap;
+    }
+    .buttons {
+      display:flex;
+      margin:10px 29px;
+    }
+    .text-area {
+      height:30px;
+      font-size: 13px;
+    }
+  }
+
+  @media (min-width:320px) and (max-width:375px) {
+    .items {
+      flex-wrap: wrap;
+    }
+    .buttons {
+      display:flex;
+      margin:10px 0px;
+    }
+    .text-area {
+      width: 150px;
+      height:30px;
+      font-size: 13px;
+    }
+  }
+  

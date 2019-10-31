@@ -1,0 +1,47 @@
+.header {
+    text-align: center;
+    font-size: 30px;
+    color: rgb(189, 111, 111);
+    padding: 20px;
+    text-shadow: 5px 5px 3px rgb(59, 59, 59);
+  }  
+
+.header .input-box {
+    padding: 10px;
+    background-color: rgb(222, 245, 245);
+    box-shadow: 5px 5px 5px grey;
+    color: rgb(117, 53, 53);
+    font-size: 20px;
+    border: none;
+    font-weight: bold;
+  }
+
+.header .add-btn {
+    width: 60px;
+    padding: 10px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px grey;
+    background-color: rgb(209, 166, 166);
+    text-shadow: 4px 3px 3px rgb(26, 2, 2);
+  }
+  
+  @media (min-width:375px) and (max-width:425px) {
+    .header {
+      font-size: 25px;
+    }
+    .header .input-box {
+      padding: 5px;
+      font-size: 18px;
+      width:180px;
+    }
+    .header .add-btn {
+      padding: 5px;
+      font-size: 18px;
+      width: 45px;
+    }
+  }
+
+  

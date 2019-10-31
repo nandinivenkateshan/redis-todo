@@ -1,0 +1,60 @@
+.pop-up-date {
+    height: 90px;
+    width: 240px;
+    position: fixed;
+    top: calc(50vh - 45px);
+    left: calc(50vw - 100px);
+    background-color: rgb(82, 80, 75);
+  }
+  
+  .pop-up-date input {
+    margin: 10px 0px 0px 50px;
+  }
+  .pop-up-date .close-btn {
+    height: 20px;
+    width: 60px;
+    border: none;
+    color: rgb(20, 32, 3);
+    background-color: rgb(238, 228, 228);
+    font-weight: bold;
+    font-size: 15px;
+    margin: 20px 0px 0px 30px;
+  }
+  .pop-up-date .save-btn {
+    height: 20px;
+    width: 60px;
+    border: none;
+    color: rgb(107, 6, 6);
+    background-color: rgb(238, 228, 228);
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 4px;
+  }
+  
+  .pop-up-date .none-btn {
+    height: 20px;
+    width: 60px;
+    border: none;
+    color: rgb(107, 6, 6);
+    background-color: rgb(238, 228, 228);
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 4px;
+  }
+  @media (min-width:375px) and (max-width:425px) {
+    .pop-up-date input {
+      margin: 10px 0px 0px 25px;
+    }
+    .pop-up-date {
+      height: 80px;
+      width: 190px;
+    }
+    .pop-up-date .close-btn, .pop-up-date .save-btn, .pop-up-date .none-btn   {
+      height: 16px;
+      width: 50px;
+      font-size: 13px;
+    }
+    .pop-up-date .close-btn{
+      margin-left:12px;
+    }
+  }

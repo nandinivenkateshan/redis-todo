@@ -1,0 +1,19 @@
+.select {
+    width: 150px;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px grey;
+    background-color: rgb(209, 166, 166);
+    text-shadow: 4px 3px 3px rgb(26, 2, 2);
+    margin-left: 10px;
+    text-align: center;
+  }
+  @media (min-width:375px) and (max-width:425px) {
+    .select {
+      padding: 5px;
+      font-size: 18px;
+    }
+  }
+  

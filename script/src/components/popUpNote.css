@@ -1,0 +1,52 @@
+
+.pop-up-note {
+    height: 150px;
+    width: 200px;
+    position: fixed;
+    top: calc(50vh - 20px);
+    left: calc(50vw - 200px);
+    background-color: rgb(124, 103, 94);
+  }
+  
+  .pop-up-note .textarea-note {
+    height: 100px;
+    width: 194px;
+    border: none;
+    resize: none;
+    outline: none;
+    margin: 3px;
+    color: rgb(90, 2, 2);
+  }
+  
+  .pop-up-note .save-btn {
+    height: 30px;
+    width: 60px;
+    border: none;
+    background-color: rgb(43, 77, 43);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 60px;
+  }
+  @media (min-width:375px) and (max-width:425px) {
+    .pop-up-note {
+      height: 130px;
+    width: 130px;
+    }
+    .pop-up-note .textarea-note {
+      height: 80px;
+      width:123px;
+    }
+    .pop-up-note .save-btn {
+      height: 25px;
+      width: 55px;
+      font-size: 14px;
+      margin-left: 35px;
+    }
+  }  
+
+  @media (min-width:320px) and (max-width:375px)  {
+    .pop-up-note {
+      left: calc(50vw - 170px);
+    }
+  }

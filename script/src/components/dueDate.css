@@ -1,0 +1,30 @@
+
+.due-date-btn {
+    height: 33px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(146, 77, 77, 0.815);
+    text-shadow: 3px 3px 2px rgb(77, 35, 35);
+    border-radius: 7px;
+    box-shadow: 3px 5px 1px rgb(68, 37, 37);
+    font-size: 17px;
+    min-width: 100px;
+    margin-left: 20px;
+  }
+
+
+  @media (min-width:375px) and (max-width:425px) {
+    .due-date-btn{
+     min-width: 10px;
+     font-size: 15px;
+     height: 25px;
+    }
+   }
+   @media (min-width:320px) and (max-width:375px) {
+    .due-date-btn{
+      width: 80px;
+      font-size: 13px;
+      height: 25px;
+     }
+  }
