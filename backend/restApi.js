@@ -15,6 +15,10 @@ app.use(express.static('../script'))
 
 app.use(express.json())
 
-app.get('/todos', db.addTodo)
+app.get('/todos', db.fetchTodo)
+app.post('/todos', db.addTodo)
+app.post('/todos/deleteList', db.deleteList)
+app.post('/todos/checkBox', db.checkBox)
+app.post('/todos/updateText', db.updateText)
 
 app.listen(port, () => console.log(`App running on the port ${port}`))

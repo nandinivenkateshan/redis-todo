@@ -15,7 +15,7 @@ function Todo (props) {
 
   return (
     props.items.map(item => {
-      const checkBoxClass = (item.complete) ? 'strike-through' : 'text-area'
+      const checkBoxClass = (item.isComplete) ? 'strike-through' : 'text-area'
       return (
         <li key={item.id} className='todo-list'>
           <TodoItem

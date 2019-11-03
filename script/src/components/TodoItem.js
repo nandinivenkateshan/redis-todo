@@ -21,10 +21,10 @@ function TodoItem (props) {
 
   return (
     <section className='items'>
-      <CheckBox id={item.id} onCheckBox={key => handleCheckBox(key)} />
+      <CheckBox id={item.id} isComplete={item.isComplete} onCheckBox={key => handleCheckBox(key)} />
       <div className='show-input-date'>
         <TextArea item={item} className={className} onUpdate={(key, event) => handleUpdate(key, event)} />
-        {item.saveDate && <label>{item.updateDate}</label>}
+        {item.isSaveDate && <label>{item.updateDate}</label>}
       </div>
       <div className='buttons'>
         <Delete id={item.id} onDelete={key => handleDelete(key)} />

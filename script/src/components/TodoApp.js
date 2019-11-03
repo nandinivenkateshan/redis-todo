@@ -15,11 +15,37 @@ function TodoApp () {
   useEffect(() => {
     async function fetchData () {
       const url = await fetch('http://localhost:3001/todos')
-      const data = await url.json()
-      setItem([data])
+      let items = await url.json()
+      items = items.map(item => {
+        return {
+          id: Number(item.id),
+          text: item.text,
+          isComplete: JSON.parse(item.isComplete),
+          isNote: JSON.parse(item.isNote),
+          noteValue: item.noteValue,
+          isDueDate: JSON.parse(item.isDueDate),
+          updateDate: item.updateDate,
+          isSaveDate: JSON.parse(item.isSaveDate)
+        }
+      })
+      setItem(items)
     }
     fetchData()
   }, [])
+
+  // useEffect(() => {
+  async function addToDb (url, data) {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    await response.json()
+  }
+
+  // })
 
   const handleInput = event => setInput(event.target.value)
 
@@ -28,55 +54,60 @@ function TodoApp () {
     const item = {
       id: Date.now(),
       text: input,
-      complete: false,
-      note: false,
+      isComplete: false,
+      isNote: false,
       noteValue: '',
-      dueDate: false,
+      isDueDate: false,
       updateDate: '',
-      saveDate: false
+      isSaveDate: false
     }
     const str = item.text.trim()
-    console.log(item)
     if (str === '') alert('Enter the values')
-    else setItem([item, ...items])
+    else {
+      setItem([item, ...items])
+      addToDb('http://localhost:3001/todos', item)
+    }
     setInput('')
   }
 
   const handleDelete = key => {
     const item = items.filter(item => item.id !== key)
+    addToDb('http://localhost:3001/todos/deleteList', { key })
     setItem(item)
   }
 
   const handleCheckBox = key => {
-    const item = items.map(item => {
+    const newItems = items.map(item => {
       if (item.id === key) {
-        item.complete = !item.complete
+        item.isComplete = !item.isComplete
         return item
       }
       return item
     })
-    setItem(item)
+    addToDb('http://localhost:3001/todos/checkBox', { key })
+    setItem(newItems)
   }
 
   const handleUpdate = (key, event) => {
-    const item = items.map(item => {
+    const newItems = items.map(item => {
       if (item.id === key) {
         item.text = event.target.value
         return item
       }
       return item
     })
-    setItem(item)
+    addToDb('http://localhost:3001/todos/updateText', newItems)
+    setItem(newItems)
   }
 
   const handleNote = key => {
     setCloseNote(true)
     const newItems = items.map(item => {
       if (item.id === key) {
-        item.note = true
+        item.isNote = true
         return item
       } else {
-        item.note = false
+        item.isNote = false
         return item
       }
     })
@@ -98,10 +129,10 @@ function TodoApp () {
     setCloseDate(true)
     const newItems = items.map(item => {
       if (item.id === key) {
-        item.dueDate = true
+        item.isDueDate = true
         return item
       } else {
-        item.dueDate = false
+        item.isDueDate = false
         return item
       }
     })
@@ -125,7 +156,7 @@ function TodoApp () {
   const handleSaveDate = id => {
     const newItems = items.map(item => {
       if (item.id === id) {
-        item.saveDate = true
+        item.isSaveDate = true
         return item
       }
       return item
@@ -152,9 +183,9 @@ function TodoApp () {
 
   const handleFilterTodo = val => {
     if (val === 'Completed') {
-      setFilter(items.filter(item => item.complete))
+      setFilter(items.filter(item => item.isComplete))
     }
-    if (val === 'Pending') setFilter(items.filter(item => !item.complete))
+    if (val === 'Pending') setFilter(items.filter(item => !item.isComplete))
     if (val === 'All') setFilter(null)
   }
 
@@ -179,7 +210,7 @@ function TodoApp () {
 
       {items.map(item => {
         return (
-          item.note && (
+          item.isNote && (
             <PopUpNote
               key={item.id}
               item={item}
@@ -192,7 +223,7 @@ function TodoApp () {
       })}
       {items.map(item => {
         return (
-          item.dueDate && (
+          item.isDueDate && (
             <PopUpDate
               key={item.id}
               id={item.id}
