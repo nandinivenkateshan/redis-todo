@@ -12,9 +12,9 @@ client.on('error', function () {
 let array = []
 
 function addTodo (req, res) {
-  const { id = 0, text = 'abc', isComplete = false, isNote = false, noteValue = '', isDueDate = false, updateDate = '', isSaveDate = false } = req.body
-  client.hmset(id, 'id', id, 'text', text, 'isComplete', isComplete, 'isNote', isNote, 'noteValue', noteValue,
-    'isDueDate', isDueDate, 'updateDate', updateDate, 'isSaveDate', isSaveDate,
+  const { id = 0, text = 'abc', isComplete = false, noteValue = '', updateDate = '', isSaveDate = false } = req.body
+  client.hmset(id, 'id', id, 'text', text, 'isComplete', isComplete, 'noteValue', noteValue,
+    'updateDate', updateDate, 'isSaveDate', isSaveDate,
     function (err, result) {
       if (err) console.log('Error while adding todo', err)
     })
@@ -46,6 +46,14 @@ function updateText (req, res) {
   array = req.body
 }
 
+function updateNote (req, res) {
+  array = req.body
+}
+
+function updateDate (req, res) {
+  array = req.body
+}
+
 function fetchTodo (req, res) {
   res.status(200).json(array)
 }
@@ -55,5 +63,7 @@ module.exports = {
   fetchTodo,
   deleteList,
   checkBox,
-  updateText
+  updateText,
+  updateNote,
+  updateDate
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import './todo.css'
-import TodoItem from './TodoItem'
+import TodoItem from '../todoItem/TodoItem'
 
 function Todo (props) {
   const handleDelete = key => props.onDelete(key)

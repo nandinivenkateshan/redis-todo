@@ -1,11 +1,11 @@
 import React from 'react'
 import './todoItem.css'
-import Delete from './Delete'
-import CheckBox from './CheckBox'
-import TextArea from './TextArea'
-import Note from './Note'
+import Delete from '../buttons/Delete'
+import CheckBox from '../buttons/CheckBox'
+import TextArea from '../buttons/TextArea'
+import Note from '../buttons/Note'
 
-import DueDate from './DueDate'
+import DueDate from '../buttons/DueDate'
 
 function TodoItem (props) {
   const { className, item, onDelete, onCheckBox, onUpdate, onBlur, onNote, onDueDate } = props

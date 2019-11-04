@@ -20,5 +20,7 @@ app.post('/todos', db.addTodo)
 app.post('/todos/deleteList', db.deleteList)
 app.post('/todos/checkBox', db.checkBox)
 app.post('/todos/updateText', db.updateText)
+app.post('/todos/updateNote', db.updateNote)
+app.post('/todos/updateDate', db.updateDate)
 
 app.listen(port, () => console.log(`App running on the port ${port}`))

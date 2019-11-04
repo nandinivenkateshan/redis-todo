@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import AddTodo from './AddTodo'
-import Todo from './Todo'
-import PopUpNote from './PopUpNote'
-import PopUpDate from './PopUpDate'
+import AddTodo from '../addTodo/AddTodo'
+import Todo from '../todo/Todo'
+import PopUpNote from '../popUp/PopUpNote'
+import PopUpDate from '../popUp/PopUpDate'
 import './style.css'
 
 function TodoApp () {
@@ -98,6 +98,7 @@ function TodoApp () {
     items.map(item => {
       if (item.id === key) {
         if (item.text === '') {
+        //  alert('enter')
           const textarea = document.getElementById('focus')
           textarea.focus()
         }

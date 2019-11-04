@@ -1,5 +1,5 @@
 import React from 'react'
-import Filter from './Filter'
+import Filter from '../filterTask/Filter'
 import './addTodo.css'
 
 function AddTodo (props) {
