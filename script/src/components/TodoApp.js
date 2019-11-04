@@ -21,9 +21,7 @@ function TodoApp () {
           id: Number(item.id),
           text: item.text,
           isComplete: JSON.parse(item.isComplete),
-          isNote: JSON.parse(item.isNote),
           noteValue: item.noteValue,
-          isDueDate: JSON.parse(item.isDueDate),
           updateDate: item.updateDate,
           isSaveDate: JSON.parse(item.isSaveDate)
         }
@@ -33,7 +31,6 @@ function TodoApp () {
     fetchData()
   }, [])
 
-  // useEffect(() => {
   async function addToDb (url, data) {
     const response = await fetch(url, {
       method: 'POST',
@@ -44,8 +41,6 @@ function TodoApp () {
     })
     await response.json()
   }
-
-  // })
 
   const handleInput = event => setInput(event.target.value)
 
@@ -64,8 +59,8 @@ function TodoApp () {
     const str = item.text.trim()
     if (str === '') alert('Enter the values')
     else {
-      setItem([item, ...items])
       addToDb('http://localhost:3001/todos', item)
+      setItem([item, ...items])
     }
     setInput('')
   }
@@ -96,8 +91,19 @@ function TodoApp () {
       }
       return item
     })
-    addToDb('http://localhost:3001/todos/updateText', newItems)
     setItem(newItems)
+  }
+
+  const handleBlur = (key, event) => {
+    items.map(item => {
+      if (item.id === key) {
+        if (item.text === '') {
+          const textarea = document.getElementById('focus')
+          textarea.focus()
+        }
+      }
+    })
+    addToDb('http://localhost:3001/todos/updateText', items)
   }
 
   const handleNote = key => {
@@ -162,6 +168,7 @@ function TodoApp () {
       return item
     })
     setCloseDate(false)
+    addToDb('http://localhost:3001/todos/updateDate', newItems)
     setItem(newItems)
   }
 
@@ -177,14 +184,15 @@ function TodoApp () {
     setItem(newItems)
   }
 
-  const handleCloseNote = () => setCloseNote(false)
+  const handleSaveNote = () => {
+    addToDb('http://localhost:3001/todos/updateNote', items)
+    setCloseNote(false)
+  }
 
   const handleCloseDate = () => setCloseDate(false)
 
   const handleFilterTodo = val => {
-    if (val === 'Completed') {
-      setFilter(items.filter(item => item.isComplete))
-    }
+    if (val === 'Completed') setFilter(items.filter(item => item.isComplete))
     if (val === 'Pending') setFilter(items.filter(item => !item.isComplete))
     if (val === 'All') setFilter(null)
   }
@@ -203,6 +211,7 @@ function TodoApp () {
           onDelete={key => handleDelete(key)}
           onCheckBox={key => handleCheckBox(key)}
           onUpdate={(key, event) => handleUpdate(key, event)}
+          onBlur={(key, event) => handleBlur(key, event)}
           onNote={key => handleNote(key)}
           onDueDate={key => handleDueDate(key)}
         />
@@ -216,7 +225,7 @@ function TodoApp () {
               item={item}
               onPopUpNote={(event, id) => handlePopUpNote(event, id)}
               show={showNote}
-              onClose={() => handleCloseNote()}
+              onSave={() => handleSaveNote()}
             />
           )
         )

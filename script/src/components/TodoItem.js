@@ -8,12 +8,14 @@ import Note from './Note'
 import DueDate from './DueDate'
 
 function TodoItem (props) {
-  const { className, item, onDelete, onCheckBox, onUpdate, onNote, onDueDate } = props
+  const { className, item, onDelete, onCheckBox, onUpdate, onBlur, onNote, onDueDate } = props
   const handleDelete = key => onDelete(key)
 
   const handleCheckBox = key => onCheckBox(key)
 
   const handleUpdate = (key, event) => onUpdate(key, event)
+
+  const handleBlur = (key, event) => onBlur(key, event)
 
   const handleNote = (key) => onNote(key)
 
@@ -23,7 +25,10 @@ function TodoItem (props) {
     <section className='items'>
       <CheckBox id={item.id} isComplete={item.isComplete} onCheckBox={key => handleCheckBox(key)} />
       <div className='show-input-date'>
-        <TextArea item={item} className={className} onUpdate={(key, event) => handleUpdate(key, event)} />
+        <TextArea
+          item={item} className={className} onUpdate={(key, event) => handleUpdate(key, event)}
+          onBlur={(key, event) => handleBlur(key, event)}
+        />
         {item.isSaveDate && <label>{item.updateDate}</label>}
       </div>
       <div className='buttons'>

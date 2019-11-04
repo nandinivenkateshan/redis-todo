@@ -9,6 +9,8 @@ function Todo (props) {
 
   const handleUpdate = (key, event) => props.onUpdate(key, event)
 
+  const handleBlur = (key, event) => props.onBlur(key, event)
+
   const handleNote = key => props.onNote(key)
 
   const handleDueDate = key => props.onDueDate(key)
@@ -22,6 +24,7 @@ function Todo (props) {
             item={item} onDelete={key => handleDelete(key)}
             onCheckBox={key => handleCheckBox(key)}
             onUpdate={(key, event) => handleUpdate(key, event)}
+            onBlur={(key, event) => handleBlur(key, event)}
             onNote={key => handleNote(key)}
             onDueDate={key => handleDueDate(key)}
             className={checkBoxClass}

@@ -3,18 +3,18 @@ import './popUpNote.css'
 
 function PopUpNote (props) {
   // console.log(props)
-  const { item: { id }, onPopUpNote, show, onClose } = props
+  const { item: { id }, onPopUpNote, show, onSave } = props
   const handlePopUpNote = (event, id) => {
     onPopUpNote(event, id)
   }
 
-  const handleCloseNote = () => onClose()
+  const handleSaveNote = () => onSave()
 
   return (
-    props.show && (
+    show && (
       <div className='pop-up-note'>
         <textarea value={props.item.noteValue} onChange={(event) => handlePopUpNote(event, id)} className='textarea-note'>{props.item.noteValue}</textarea>
-        <button className='save-btn' onClick={() => handleCloseNote()}>Save</button>
+        <button className='save-btn' onClick={() => handleSaveNote()}>Save</button>
       </div>)
   )
 }
